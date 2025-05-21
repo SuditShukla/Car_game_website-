@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>कार रेसिंग गेम</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      margin: 0;
+      padding: 0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .light-mode {
+      background-color: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px;
+      background-color: #111;
+    }
+
+    header h1 {
+      font-size: 36px;
+    }
+
+    nav {
+      text-align: center;
+      background: #222;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #ffcc00;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background: #ffcc00;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+    }
+
+    .hero img {
+      width: 300px;
+      animation: drive 5s infinite linear;
+    }
+
+    @keyframes drive {
+      0% { transform: translateX(-100px); }
+      50% { transform: translateX(100px); }
+      100% { transform: translateX(-100px); }
+    }
+
+    .features, .contact, .download {
+      padding: 30px 20px;
+      background: #1a1a1a;
+      text-align: center;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .features li {
+      margin: 10px 0;
+      padding: 15px;
+      background: #292929;
+      border-radius: 8px;
+    }
+
+    .download a {
+      padding: 15px 30px;
+      background: #ffcc00;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .contact form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input, .contact textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      background: #ffcc00;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: gray;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleMode()">डार्क/लाइट मोड</button>
+
+  <header>
+    <h1>कार रेसिंग गेम</h1>
+    <p>तेज़ रफ्तार, धमाकेदार एक्सपीरियंस!</p>
+  </header>
+
+  <nav>
+    <a href="#about">गेम के बारे में</a>
+    <a href="#features">फीचर्स</a>
+    <a href="#download">डाउनलोड</a>
+    <a href="#contact">संपर्क</a>
+  </nav>
+
+  <div class="hero animate-on-scroll" id="about">
+    <h2>अब अपनी कार दौड़ाइए और बनिए रेसिंग चैंपियन!</h2>
+    <img src="https://i.imgur.com/Ot5DWAW.png" alt="कार गेम">
+  </div>
+
+  <div class="features animate-on-scroll" id="features">
+    <h2>गेम की विशेषताएँ</h2>
+    <ul>
+      <li>तेज़ और रियलिस्टिक ग्राफिक्स</li>
+      <li>कई रेसिंग ट्रैक और चैलेंज</li>
+      <li>ऑनलाइन लीडरबोर्ड</li>
+      <li>कस्टम कार्स और अपग्रेड</li>
+    </ul>
+  </div>
+
+  <div class="download animate-on-scroll" id="download">
+    <h2>गेम डाउनलोड करें</h2>
+    <a href="#">अब डाउनलोड करें</a>
+  </div>
+
+  <div class="contact animate-on-scroll" id="contact">
+    <h2>हमसे संपर्क करें</h2>
+    <form>
+      <input type="text" placeholder="आपका नाम" required>
+      <input type="email" placeholder="ईमेल" required>
+      <textarea rows="4" placeholder="संदेश"></textarea>
+      <button type="submit">भेजें</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 कार रेसिंग गेम | सभी अधिकार सुरक्षित
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    // Scroll Animation
+    const scrollElements = document.querySelectorAll('.animate-on-scroll');
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    scrollElements.forEach(el => scrollObserver.observe(el));
+  </script>
+</body>
+</html>
